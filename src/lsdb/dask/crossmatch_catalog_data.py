@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from typing import TYPE_CHECKING, List, Tuple, Type, cast
 
 import dask
@@ -60,13 +58,13 @@ def perform_crossmatch(
 
 # pylint: disable=too-many-locals
 def crossmatch_catalog_data(
-    left: Catalog,
-    right: Catalog,
+    left: "Catalog",
+    right: "Catalog",
     suffixes: Tuple[str, str],
     algorithm: Type[AbstractCrossmatchAlgorithm]
     | BuiltInCrossmatchAlgorithm = BuiltInCrossmatchAlgorithm.KD_TREE,
     **kwargs,
-) -> Tuple[dd.core.DataFrame, DaskDFPixelMap, PixelAlignment]:
+) -> Tuple[dd.core.DataFrame, "DaskDFPixelMap", PixelAlignment]:
     """Cross-matches the data from two catalogs
 
     Args:
@@ -186,7 +184,7 @@ def get_crossmatch_algorithm(
 
 
 def align_catalog_to_partitions(
-    catalog: Catalog,
+    catalog: "Catalog",
     pixels: pd.DataFrame,
     order_col: str = "Norder",
     pixel_col: str = "Npix",
